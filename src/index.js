@@ -21,30 +21,20 @@ refs.switch.addEventListener('change', setClassList);
 function setClassList(e) {
   const check = refs.switch.checked;
     if (check) {
-    //refs.body.classList.add(Theme.DARK);
-      //refs.body.classList.remove(Theme.LIGHT);
+    changeTheme(Theme.DARK, Theme.LIGHT);
     localStorage.setItem('theme', Theme.DARK);
-  } else {
-    //refs.body.classList.add(Theme.LIGHT);
-    //refs.body.classList.remove(Theme.DARK);
-     localStorage.removeItem('theme');
+    } else {
+    changeTheme(Theme.LIGHT, Theme.DARK);
+    localStorage.removeItem('theme');
     localStorage.setItem('theme', Theme.LIGHT);
     }
-    changeTheme()
-}
-function changeTheme(e) {
-if (refs.switch.checked) {
-    refs.body.classList.add(Theme.DARK)
-    refs.body.classList.remove(Theme.LIGHT)
-} else {
-    refs.body.classList.remove(Theme.DARK)
-    refs.body.classList.add(Theme.LIGHT)}
-    // if (refs.switch.checked) {
-    //     refs.body.classList.toggle(Theme.DARK)
-    // } else { refs.body.classList.toggle(Theme.LIGHT)}
-      //const theme = refs.switch.checked ? refs.body.classList.toggle(Theme.DARK) : refs.body.classList.toggle(Theme.LIGHT); 
+   
 }
 
+function changeTheme(addTheme, remTheme) {
+refs.body.classList.add(addTheme);
+refs.body.classList.remove(remTheme);
+}
 
 const themeInLocal = localStorage.getItem('theme');
 if (themeInLocal === Theme.DARK) {
